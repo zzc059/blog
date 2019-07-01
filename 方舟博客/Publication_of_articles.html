@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="css/Release_style.css" />
+    <link rel="stylesheet" type="text/css" href="css/wangEditor.min.css" />
+    <script src="js/jquery-3.4.0.min.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/tag.js"></script>
+    <script src="js/wangEditor.min.js"></script>
+    <script src="js/vue.min.js"></script>
+    <title>文章发布</title>
+</head>
+
+<body>
+    <div class="content">
+        <h2 class="description">文章标题</h2>
+        <input type="text" class="title" id="title">
+        <h2 class="description">选择分类</h2>
+        <div class="select">
+            <p data-value="产品动态">产品动态</p>
+            <ul>
+                <li data-value="产品动态" class="Selected">产品动态</li>
+                <li data-value="客户案例">客户案例</li>
+                <li data-value="数据分析方法">数据分析方法</li>
+                <li data-value="市场活动">市场活动</li>
+                <li data-value="资料下载">资料下载</li>
+            </ul>
+        </div>
+        <div class="container">
+            <form class="ac-custom ac-checkbox ac-checkmark" autocomplete="off">
+                <ul>
+                    <div id="oldTag">
+                        <div class="shape" v-for="(item,index) in list" :key="index">
+                            <li><input :id="forId(index)" name="cb" type="checkbox" :value="forVal(id,index)"><label
+                                    :for="forId(index)">{{text[index]}}</label>
+                            </li>
+                        </div>
+                    </div>
+                </ul>
+            </form>
+        </div>
+        <script>
+            var list = [],
+                id = [];
+            $.ajax({
+                url: "http://localhost:8080/user/tag/findAllTag", //获取数据列 
+                type: 'GET',
+                data: {},
+                dataType: "JSON",
+                async: false,
+                success: function (e) {
+                    console.log(e);
+                    var tag = JSON.stringify(e);
+                    jsonData = JSON.parse(tag); //把后台传来的数据转来JSON格式
+                    for (x in jsonData.data) {
+                        list.push(jsonData.data[x].tag_name)
+                    }
+                    for (y in jsonData.data) {
+                        id.push(jsonData.data[y].tag_id)
+                    }
+                }
+            });
+            var vm = new Vue({
+                el: '#oldTag',
+                data: {
+                    text: list
+                },
+                methods: {
+                    forId: function (index) {
+                        return "cb" + index
+                    },
+                    forVal: function (id, index) {
+                        return id[index]
+                    }
+                }
+            })
+        </script>
+        <div class="label">
+            <div class="label_tag">
+                <h2 class="description">添加标签</h2>
+            </div>
+            <input type="text" id="tagValue">
+        </div>
+        <div id="div1" class="toolbar"></div>
+        <div id="div2" name="content" class="text"></div>
+        <button class="submit" id="submit" value="提交">提交</button>
+        <br>
+        <button class="submit" onclick="window.location.href='file:///D:/Html/方舟博客/blog.html'">返回博客</button>
+    </div>
+    <script type="text/javascript" src="js/svg.js"></script>
+    <script>
+        var tag = new Tag("tagValue");
+        tag.initView();
+    </script>
+    <script>
+        var E = window.wangEditor
+        var editor = new E('#div1', '#div2') // 两个参数也可以传入 elem 对象，class 选择器
+        editor.customConfig.menus = [
+            'head', // 标题
+            'bold',
+            'fontSize', /** 字号 */
+            'fontName', /** 字体 */
+            'italic', /** 斜体 */
+            'strikeThrough', // 删除线
+            'foreColor', // 文字颜色
+            'backColor', // 背景颜色
+            'link', // 插入链接
+            'list', // 列表
+            'justify', // 对齐方式
+            'quote', // 引用
+            'image', // 插入图片
+            'table', // 表格
+            'video', // 插入视频
+            'code', // 插入代码
+            'undo', // 撤销
+            'redo', // 重复
+        ]
+        //开启debug模式
+        editor.customConfig.debug = true;
+        // 关闭粘贴内容中的样式
+        editor.customConfig.pasteFilterStyle = false
+        // 忽略粘贴内容中的图片
+        editor.customConfig.pasteIgnoreImg = true
+        // 使用 base64 保存图片
+        //editor.customConfig.uploadImgShowBase64 = true
+
+        editor.customConfig.uploadFileName = 'myFile'; //设置文件上传的参数名称
+        editor.customConfig.uploadImgServer =
+            'http://localhost:8080/user/uploadMutilPartFile'; //设置上传文件的服务器路径http://10.161.10.144:8080/blog/uploadMutilPartFile
+        editor.customConfig.uploadImgMaxSize = 3 * 1024 * 1024; // 将图片大小限制为 3M
+        //自定义上传图片事件
+        editor.customConfig.uploadImgHooks = {
+            before: function (xhr, editor, files) {
+
+            },
+            success: function (xhr, editor, result) {
+                console.log("上传成功");
+            },
+            fail: function (xhr, editor, result) {
+                console.log("上传失败,原因是" + result);
+            },
+            error: function (xhr, editor) {
+                console.log("上传出错");
+            },
+            timeout: function (xhr, editor) {
+                console.log("上传超时");
+            }
+        }
+        editor.create();
+    </script>
+    <script>
+        check_val1 = [];
+        var text = "";
+        for (i in $("#tagValue").val()) {
+            if ($("#tagValue").val()[i] == ",") {
+                check_val1.push(text);
+                text = "";
+            } else {
+                text += $("#tagValue").val()[i];
+            }
+        }
+        check_val1.push(text);
+
+        $("#submit").click(function () {
+
+            obj = document.getElementsByName("cb");
+            var check_val = [];
+            for (k in obj) {
+                if (obj[k].checked) {
+                    check_val.push(parseInt(obj[k].value));
+                }
+            }
+
+            var simpleArticle = {};
+            simpleArticle.category_id = $(".Selected").index() + 1; //大分类
+            simpleArticle.title = $("#title").val(); //$(".Selected").attr("value")   标题
+            simpleArticle.content = editor.txt.html();
+            simpleArticle.user_id = 8; //用户id
+            simpleArticle.summary = $("#div2").text(); /* 文章内容 */
+            simpleArticle.tagIdList = check_val; //$("#tagValue").val();check_val     原标签
+            //simpleArticle.newTagList = check_val1; /* 新标签 */
+
+            $.ajax({
+                url: "http://localhost:8080/user/publishArticle",
+                data: JSON.stringify(simpleArticle),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                success: function (data) {
+                    console.log(data);
+                    if(data==200){
+                        alert("上传成功");
+                        window.location.href = "file:///D:/Html/方舟博客/Publication_of_articles.html";
+                    }
+                },
+                error: function (data) {
+                    console.log("error");
+                }
+            });
+            console.log(JSON.stringify(simpleArticle));
+        })
+    </script>
+</body>
+
+</html>

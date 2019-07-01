@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    color: #555;
+    font-family: helvetica neue, Helvetica, pingfang sc, hiragino sans gb, microsoft yahei, Arial, sans-serif;
+    font-size: 15px
+}
+
+a {
+    color: #555;
+    text-decoration: none
+}
+
+button,
+input,
+textarea {
+    border: 1px solid #ddeafb
+}
+
+button[class=button]{
+    cursor: pointer
+}
+
+input,
+button {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    outline: 0;
+    margin-bottom: 5px;
+    border-radius: 5px
+}
+
+.hint {
+    font-size: 12px;
+    text-align: right;
+    padding-right: 10px;
+    margin-bottom: 15px;
+    visibility: hidden
+}
+
+.right {
+    border-color: #1dc091
+}
+
+.hint_right {
+    color: #1dc091
+}
+
+.wrong {
+    border-color: #ea5a70
+}
+
+.hint_wrong {
+    color: #ea5a70
+}
+
+button[type=submit],
+input[type=submit],
+.button {
+    display: block;
+    margin: 0 auto;
+    line-height: 20px;
+    font-size: 20px;
+    color: #fff;
+    background: #0f88eb;
+    border: 0
+}
+
+.lable {
+    display: inline-block
+}
+
+.nav {
+    width: 400px;
+    height: 40px;
+    margin: 0 auto;
+    background: #0f88eb
+}
+
+.nav_left,
+.nav_right {
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    width: 49%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 24px
+}
+
+.nav_left a,
+.nav_right a {
+    color: #fff
+}
+
+.nav_left {
+    padding-left: 20px;
+    text-align: left
+}
+
+.nav_right {
+    padding-right: 20px;
+    text-align: right
+}
+
+.number,
+.time {
+    display: inline-block;
+    width: 50%
+}
+
+.time,
+.msge {
+    text-align: right
+}
+
+.msge a {
+    color: #fb752d
+}

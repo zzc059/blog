@@ -1,0 +1,371 @@
+.demo-ft {
+    text-align: center;
+    padding: 50px 20px;
+    background-image: linear-gradient(90deg, #34b6f6 0%, #6f5af8 100%);
+  }
+  .demo-ft .title {
+    font-size: 36px;
+    color: #fff;
+  }
+  .demo-ft .sub-title {
+    font-size: 14px;
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+  }
+  .demo-ft .text-button {
+    padding-top: 20px;
+    font-size: 16px;
+  }
+  @media (max-width: 420px) {
+    .demo-ft .text-button a:last-child {
+      margin-top: 20px;
+      width: 175px;
+    }
+  }
+  .demo-ft .text-button a {
+    margin: 0 10px;
+    display: inline-block;
+    height: 48px;
+    padding: 12px 47px;
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 87px;
+    transition: all 0.2s ease;
+  }
+  .demo-ft .text-button a:first-child {
+    color: rgba(255, 255, 255, 0.8);
+    background: #ff8f5f;
+    background-image: linear-gradient(to right, #feb167, #ff8f5f);
+    border: none;
+  }
+  .demo-ft .text-button a:first-child:hover {
+    color: #fff;
+    opacity: 1;
+    box-shadow: 2px 4px 6px rgba(18, 59, 208, 0.36);
+  }
+  @media only screen and (max-width: 992px) {
+    .demo-ft .title {
+      font-size: 30px;
+    }
+  }
+  @media only screen and (max-width: 535px) {
+    .demo-ft .title {
+      font-size: 22px;
+    }
+  }
+  @media only screen and (max-width: 425px) {
+    .demo-ft .title {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .demo-ft .text-button a, .demo-ft .text-button a:last-child {
+      padding: 0;
+      font-size: 14px;
+      width: 130px;
+      height: 36px;
+      line-height: 36px;
+    }
+  }
+  @media only screen and (max-width: 375px) {
+    .demo-ft .title {
+      font-size: 17px;
+    }
+    .demo-ft .text-button a, .demo-ft .text-button a:last-child {
+      padding: 0;
+      font-size: 14px;
+      width: 108px;
+      height: 32px;
+      line-height: 32px;
+    }
+  }
+  
+  .demo-footer {
+    height: 400px;
+    background: #6c7c8a url("../images/df-bac.jpg") 50% 0;
+  }
+  .demo-footer .df-cont {
+    width: 1170px;
+    height: 100%;
+    margin: 0 auto;
+    padding-top: 68px;
+    position: relative;
+  }
+  .demo-footer .df-cont .lz {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+  .demo-footer .df-cont h1 {
+    font-size: 36px;
+    font-weight: normal;
+    color: #fff;
+    box-shadow: 0px 0px 6px 0px rgba(91, 119, 152, 0.73);
+    margin-bottom: 32px;
+  }
+  .demo-footer .df-cont p {
+    font-size: 18px;
+    line-height: 26px;
+    color: #fff;
+    box-shadow: 0px 0px 6px 0px rgba(91, 119, 152, 0.49);
+    margin-bottom: 45px;
+  }
+  .demo-footer .df-cont p.lz-text {
+    font-size: 18px;
+  }
+  .demo-footer .df-cont .text-button a {
+    display: inline-block;
+    width: 141px;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    background-image: linear-gradient(90deg, #f6b670 0%, #fd995b 100%), linear-gradient(#dd8834, #dd8834);
+    box-shadow: -3px 2px 10px 0px rgba(221, 136, 52, 0.53);
+    border-radius: 19px;
+  }
+  @media only screen and (min-width: 993px) and (max-width: 1170px) {
+    .demo-footer .df-cont {
+      width: 100%;
+    }
+    .demo-footer .df-cont h1 {
+      font-size: 38px;
+    }
+  }
+  @media only screen and (max-width: 992px) {
+    .demo-footer {
+      height: 630px;
+    }
+    .demo-footer .df-cont {
+      padding: 28px 15px 0;
+      width: 100%;
+      text-align: center;
+    }
+    .demo-footer .df-cont .lz {
+      position: static;
+      width: 270px;
+      height: 277px;
+      margin-bottom: 20px;
+    }
+    .demo-footer .df-cont h1 {
+      font-size: 26px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+    .demo-footer .df-cont p {
+      font-size: 15px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .demo-footer .df-cont p.lz-text {
+      font-size: 14px;
+    }
+  }
+  @media only screen and (max-width: 380px) {
+    .demo-footer {
+      height: auto;
+      padding-bottom: 20px;
+    }
+  }
+  
+  .m-portal-ft {
+    background: #15222c;
+  }
+  .m-portal-ft .left {
+    margin-top: 45px;
+  }
+  .m-portal-ft .left ul .hd {
+    color: #fff;
+    font-size: 16px;
+    min-height: 50px;
+  }
+  .m-portal-ft .left ul .hd a {
+    color: #fff;
+    font-size: 16px;
+    min-height: 50px;
+  }
+  .m-portal-ft .left ul .bd {
+    margin-bottom: 24px;
+  }
+  .m-portal-ft .left ul .bd a {
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .m-portal-ft .left ul .bd a:hover {
+    color: #0098e0;
+  }
+  .m-portal-ft .left ul .bd-h5 {
+    display: none;
+  }
+  .m-portal-ft .right {
+    margin-top: 45px;
+  }
+  .m-portal-ft .right .information {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: right;
+    margin-right: 10px;
+  }
+  .m-portal-ft .right .information .logo {
+    white-space: nowrap;
+  }
+  .m-portal-ft .right .information .logo .logo-h5 {
+    display: none;
+  }
+  .m-portal-ft .right .information .logo img {
+    width: 132px;
+  }
+  .m-portal-ft .right .information .logo .img-1 {
+    width: 132px;
+    margin-right: 12px;
+    border-right: 1px solid #4A5054;
+    padding-right: 20px;
+  }
+  .m-portal-ft .right .information .tel {
+    margin-top: 20px;
+    margin-bottom: 6px;
+  }
+  .m-portal-ft .right .information i {
+    font-size: 14px;
+    color: #fff;
+    margin-right: 5px;
+  }
+  .m-portal-ft .right .qq, .m-portal-ft .right .weixin {
+    width: 115px;
+    margin: 0 10px 20px 10px;
+    text-align: right;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    float: right;
+  }
+  .m-portal-ft .right .qq img, .m-portal-ft .right .weixin img {
+    width: 112px;
+    height: 112px;
+  }
+  .m-portal-ft .right .qcode {
+    margin-top: 110px;
+  }
+  .m-portal-ft .text-info {
+    line-height: 25px;
+    padding: 20px 0;
+    color: rgba(255, 255, 255, 0.7);
+    border-top: solid #4A5054 1px;
+  }
+  .m-portal-ft .text-info .row-up, .m-portal-ft .text-info .row-down {
+    white-space: nowrap;
+  }
+  @media (min-width:768px) {
+    .m-portal-ft .text-info .row-up {
+      text-align: right;
+    }
+    .m-portal-ft .text-info .row-down {
+      text-align: left;
+    }
+  }
+  @media (max-width:768px) {
+    .m-portal-ft .text-info .row-up {
+      text-align: center;
+    }
+    .m-portal-ft .text-info .row-down {
+      text-align: center;
+    }
+  }
+  @media (max-width:375px) {
+    .m-portal-ft .text-info .row1 {
+      display: none;
+    }
+    .m-portal-ft .text-info .row2 {
+      display: block;
+    }
+  }
+  @media (min-width:375px) {
+    .m-portal-ft .text-info .row1 {
+      display: block;
+    }
+    .m-portal-ft .text-info .row2 {
+      display: none;
+    }
+  }
+  .m-portal-ft .text-info span, .m-portal-ft .text-info a {
+    margin-right: 10px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+  .m-portal-ft .text-info a:hover {
+    color: #0098e0;
+  }
+  @media (max-width:992px) {
+    .m-portal-ft .right .information {
+      text-align: center;
+    }
+    .m-portal-ft .right .information .logo .logo-h5 {
+      display: inline-block;
+    }
+    .m-portal-ft .right .information .logo .logo-pc {
+      display: none;
+    }
+    .m-portal-ft .right .qcode {
+      text-align: center;
+    }
+    .m-portal-ft .right .weixin, .m-portal-ft .right .qq {
+      float: initial; 
+      display: inline-block;
+      vertical-align: top;
+    }
+    .m-portal-ft .left {
+      display: flex;
+    }
+    .m-portal-ft .left ul {
+      flex: 1;
+    }
+    .m-portal-ft .left ul .hd {
+      min-height: 42px;
+    }
+    .m-portal-ft .left ul .bd {
+      margin-bottom: 16px;
+    }
+    .m-portal-ft .left ul .bd-pc {
+      display: none;
+    }
+    .m-portal-ft .left ul .bd-h5 {
+      display: block;
+    }
+  }
+  @media (min-width:992px) {
+    .m-portal-ft .left {
+      display: flex;
+    }
+    .m-portal-ft .left ul {
+      flex: 1;
+    }
+  }
+  @media (min-width:1190px) {
+    .m-portal-ft .outer {
+      width: 1190px;
+      margin: 0 auto;
+    }
+    .m-portal-ft .outer .left {
+      display: flex;
+    }
+    .m-portal-ft .outer .left ul {
+      flex: 1;
+    }
+  }
+  @media (max-width:420px) {
+    .m-portal-ft .left {
+      display: block;
+      padding: 0 15px;
+    }
+    .m-portal-ft .left ul {
+      width: 33.3%;
+      float: left;
+      margin-bottom: 20px;
+      padding-left: 15px;
+    }
+    .m-portal-ft .left ul ul:first-child {
+      width: 100%;
+    }
+    .m-portal-ft .left ul.ul-doc {
+      padding-bottom: 40px;
+    }
+  }
+  

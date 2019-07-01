@@ -1,0 +1,365 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    background: url("../images/94EE7143391CF15E4AABF402620D0AD4.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+}
+
+.content {
+    width: 800px;
+    height: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.description {
+    padding: 0px 0px 0px 15px;
+    display: inline-block;
+    text-align: center;
+    color: rgb(73, 158, 255);
+}
+
+.content .title {
+    width: 350px;
+    height: 36px;
+    border-radius: 10px;
+    display: inline-block;
+    font-size: 20px;
+    font-family: "microsoft yahei";
+    text-align: center;
+}
+
+.content .select {
+    width: 150px;
+    height: 40px;
+    background: #66CCFF;
+    margin: 0px auto;
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    display: inline-block;
+    z-index: 999999;
+}
+
+.content .select::after {
+    content: "";
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-left: 1px solid #FFFFFF;
+    border-bottom: 1px solid #FFFFFF;
+    top: 12px;
+    right: 12px;
+    position: absolute;
+    transform: rotate(-46deg);
+    transition: all .3s ease-in;
+}
+
+.content .select p {
+    width: 150px;
+    line-height: 40px;
+    font-size: 16px;
+    font-family: "microsoft yahei";
+    color: #FFFFFF;
+    padding: 0px 0px 0px 15px;
+}
+
+.content .select ul {
+    width: 150px;
+    display: block;
+    font-size: 16px;
+    background: #FFFFFF;
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height .3s ease-in;
+    border-radius: 10px;
+}
+
+.content .select ul li {
+    width: 150px;
+    height: 40px;
+    line-height: 40px;
+    padding: 0px 0px 0px 15px;
+    list-style: none;
+    color: #666666;
+    border-radius: 10px;
+}
+
+.content .select ul li.Selected {
+    background: #66CCFF;
+    color: #FFFFFF;
+}
+
+.content .select ul li:hover {
+    background: #D0D0D0;
+}
+
+@keyframes slide-down {
+    0% {
+        transform: scale(1, 0);
+    }
+
+    25% {
+        transform: scale(1, 1.2);
+    }
+
+    50% {
+        transform: scale(1, 0.85);
+    }
+
+    75% {
+        transform: scale(1, 1.05);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+.content .select.open ul {
+    max-height: 250px;
+    transform-origin: 50% 0;
+    animation: slide-down .5s ease-in;
+    transition: max-height .2s ease-in;
+}
+
+.content .select.open::after {
+    transform: rotate(134deg);
+    transition: all .3s ease-in;
+    top: 18px;
+
+}
+
+
+.content .label .label_tag {
+    float: left;
+    margin-top: 8px;
+}
+
+.tagsContaine {
+    width: 649px;
+    display: inline-block;
+}
+
+.tagsContaine .tagList,
+.tagsContaine .tagInput {
+    float: left;
+}
+
+.tagsContaine .tagList .tagItem {
+    height: 40px;
+    line-height: 30px;
+    background-color: #66CCFF;
+    padding: 5px 10px;
+    text-align: center;
+    float: left;
+    margin: 5px;
+    border-radius: 10px;
+    color: #FFFFFF;
+    font-size: 18px;
+    letter-spacing: 2px;
+    cursor: pointer;
+}
+
+.tagsContaine .tagList .tagItem:hover {
+    background-color: #0099FF;
+}
+
+.tagsContaine .tagList .tagItem .delete {
+    float: right;
+    width: 15px;
+    height: 15px;
+    background-image: url(../images/x.png);
+    background-repeat: round;
+    margin-top: -10px;
+    margin-right: -15px;
+    display: none;
+}
+
+.tagsContaine .tagList .tagItem:hover .delete {
+    display: block;
+}
+
+.tagsContaine .tagList .updateInput {
+    outline: none;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    border: solid thin #AAAAAA;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 0px 5px;
+    text-align: center;
+}
+
+.tagsContaine .tagInput {
+    outline: none;
+    height: 40px;
+    line-height: 40px;
+    font-size: 18px;
+    border: solid thin #AAAAAA;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 0px 5px;
+    text-align: center;
+}
+
+.tagsContaine .tagInput:focus {
+    border-color: #66CCFF;
+}
+
+
+
+.content .text {
+    background: url(../images/铅笔.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    z-index: -1;
+}
+
+.toolbar {
+    background: #66CCFF;
+    border: 1px solid #ccc;
+    width: 800px;
+}
+
+.text {
+    border: 1px solid #ccc;
+    height: 470px;
+    width: 800px;
+}
+
+.content .submit {
+    width: 150px;
+    height: 40px;
+    background: grey;
+    border-radius: 10px;
+    display: block;
+    margin: 0 auto;
+    font-family: "microsoft yahei";
+    font-size: 20px;
+    font-weight: bold;
+    color:#66CCFF;
+}
+
+*,
+*:after,
+*::before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "微软雅黑";
+}
+
+.content .ac-custom {
+    padding: 30px 0px 0px 15px;
+    height: 110px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.content .ac-custom ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0 auto;
+    max-width: 800px;
+    width: 900px;
+}
+
+.content .ac-custom .shape {
+    float: left;
+    width: 160px;
+    height: 50px;
+}
+
+.content .ac-custom li {
+    margin: 0 auto;
+    position: relative;
+}
+
+.content .ac-custom label {
+    position: relative;
+    font-size: 17px;
+    padding: 0 0 0 30px;
+    vertical-align: top;
+    color: #66CCFF;
+    cursor: pointer;
+    -webkit-transition: color 0.3s;
+    transition: color 0.3s;
+}
+
+.content .ac-custom input[type="checkbox"],
+.content .ac-custom input[type="radio"],
+.content .ac-custom label::before {
+    /*选中框*/
+    width: 25px;
+    height: 25px;
+    top: 110%;
+    left: 0;
+    margin-top: -25px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.content .ac-custom input[type="checkbox"],
+.content .ac-custom input[type="radio"] {
+    opacity: 0;
+    -webkit-appearance: none;
+    vertical-align: middle;
+    z-index: 100;
+}
+
+.content .ac-custom label::before {
+    content: '';
+    border: 4px solid #66ccff;
+    border-radius: 7px;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+}
+
+.content .ac-radio label::before {
+    border-radius: 50%;
+}
+
+.content .ac-custom input[type="checkbox"]:checked+label,
+.content .ac-custom input[type="radio"]:checked+label {
+    color: #ffffff;
+}
+
+.content .ac-custom input[type="checkbox"]:checked+label::before,
+.content .ac-custom input[type="radio"]:checked+label::before {
+    opacity: 0.8;
+}
+
+/* General SVG and path styles */
+
+.content .ac-custom svg {
+    /*对号*/
+    position: absolute;
+    width: 15px;
+    height: 40px;
+    top: 50%;
+    margin-top: -20px;
+    left: 5px;
+    pointer-events: none;
+}
+
+.content .ac-custom svg path {
+    stroke: #66ccff;
+    stroke-width: 13px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+}

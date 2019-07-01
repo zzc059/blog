@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="js/jquery-3.4.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/GetString.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" type="text/css" href="css/head.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <title>博客_易观方舟</title>
+</head>
+
+<body class="home blog group-blog">
+    <script>
+        var title = [],
+            username = [],
+            tagNameList = [],
+            tagIdList = [],
+            article_id = [],
+            flag = [],
+            a = [],
+            content = [];
+
+        var tag = {};
+        tag.page = 1;
+        var article = {};
+        article.article_id = GetString("article_id");
+        var b = parseInt(article.article_id)
+        $.ajax({
+            url: "http://localhost:8080/user/findAllAritcle",
+            data: JSON.stringify(tag),
+            type: "POST",
+            async: false,
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                console.log(data);
+                var article1 = JSON.stringify(data);
+                jsonData = JSON.parse(article1);
+                flag.push(jsonData.flag)
+                for (var i = 0; i < flag; i++) {
+                    a.push(jsonData.data[i].article_id);
+                }
+                for (var i = 0; i < flag; i++) {
+                    if (parseInt(a[i]) == b) {
+                        title.push(jsonData.data[i].title);
+                        username.push(jsonData.data[i].username);
+                        tagNameList.push(jsonData.data[i].tagNameList);
+                        tagIdList.push(jsonData.data[i].tagIdList);
+                        content.push(jsonData.data[i].content);
+                        article_id.push(jsonData.data[i].article_id);
+                    }
+                }
+            },
+            error: function (data) {
+                console.log(data)
+            }
+        });
+    </script>
+    <div class="m-portal-hd">
+        <div class="container" style="padding: 0 10px;">
+            <div class="logo">
+                <a href="/">
+                    <image class="logo-md" src="images/logo.svg" width="132" height="48" />
+                    <image class="logo-sm" src="images/logo.svg" width="112" height="38" />
+                </a>
+            </div>
+            <ul class="nav">
+                <li class="item-hover DemoHref h-dropdown" data-key="1" style="width: 87px">
+                    <a href="" class="hd">产品 <i class="iconfont icon-down"></i></a>
+                    <span class="trangle"></span>
+                    <div class="bd bd-1">
+                        <div class="nav-content-item nav-content-item-1">
+                            <div class="newNav-top">
+                                <div class="top-col" style="border-right: 1px solid #e6ecf1">
+                                    <h3 class="col-tit">营销闭环</h3>
+                                    <ul>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe668;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">自定义看板</a>
+                                                <br>
+                                                <span>灵活自定义日常关注数据，一键导出数据报表</span>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe65f;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">数据分析</a>
+                                                <br>
+                                                <span>十大分析模型，提高获客能力</span>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe66a;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">用户分群</a>
+                                                <br>
+                                                <span>将有共性的用户分群，实现个性化营销</span>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe669;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">精准触达</a>
+                                                <br>
+                                                <span>方舟内直接发送EDM，短信，APP应用消息<br>跟踪效果</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="top-col">
+                                    <h3 class="col-tit">简单易用</h3>
+                                    <ul>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe661;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">多埋点方案选择</a>
+                                                <br>
+                                                <span>可视化埋点、代码埋点随需选择</span>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe65a;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">SaaS版、私有化部署版、免费版</a>
+                                                <br>
+                                                <span>易观方舟提供多种版本，随需选择</span>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe6ad;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">分析方法学习</a>
+                                                <br>
+                                                <span>教你如何获客增长和精细化运营</span>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe6a9;</i>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="newNav-bot">
+                                <div class="top-col">
+                                    <ul>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont oran">&#xe65e;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">全景用户画像</a>
+                                                <br>
+                                                <span>掌握用户标签，用户行为，用户喜欢的APP等</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="top-col">
+                                    <ul>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont oran">&#xe664;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">多平台对接</a>
+                                                <br>
+                                                <span>提供 Open-API，支持对接其他系统</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-hover h-dropdown" data-key="4" style="width: 123px">
+                    <a href="#none" class="hd">解决方案 <i class="iconfont icon-down"></i></a>
+                    <span class="trangle"></span>
+                    <div class="bd bd-4" style="width: 470px; background: #f6f9fc">
+                        <div class="nav-content-item nav-content-item-4">
+                            <div class="newNav-top" style="height: 510px;">
+                                <div class="help-row demo">
+                                    <h3 class="row-tit">职业解决方案</h3>
+                                    <ul>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe69a;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">CXO</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe69d;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">运营</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe69c;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">市场</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe601;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">产品</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe699;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">数据</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe69e;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">研发</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe692;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">网站运营</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="r-line"></div>
+                                <div class="help-row demo">
+                                    <h3 class="row-tit">行业解决方案</h3>
+                                    <ul>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe6a0;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">电商</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe6a4;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">银行</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe6a8;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">证券</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe69f;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">教育</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe6a2;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">互联网</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe6a3;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">品牌零售</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe6a1;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">社区</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe664;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">企业服务</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="" class="hd">行业Demo</a>
+                </li>
+                <li class="item-hover h-dropdown" data-key="2">
+                    <a href="" class="hd" target="_blank">帮助文档 <i class="iconfont icon-down"></i></a>
+                    <span class="trangle"></span>
+                    <div class="bd bd-2">
+                        <div class="nav-content-item nav-content-item-2">
+                            <div class="newNav-top" style="height: 420px">
+                                <div class="help-row">
+                                    <h3 class="row-tit">只需简单4步，快速应用方舟</h3>
+                                    <ul>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe661;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">1、安装部署</a>
+                                                <br>
+                                                <span>在线体验Demo后，申请接入SDK</span>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe6ad;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="" target="_blank">2、创建项目</a>
+                                                <br>
+                                                <span>部署完成后，登录管理员账号，创建项目</span>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe655;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="" target="_blank">3、接入数据及运营服务</a>
+                                                <br>
+                                                <span>项目创建后会获得AppKey，接入成功</span>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe653;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="" target="_blank">4、开始分析</a>
+                                                <br>
+                                                <span>开始使用方舟，开启精细化运营</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="r-line"></div>
+                                <div class="help-row">
+                                    <h3 class="row-tit">方舟核心功能</h3>
+                                    <ul>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe65f;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">分析</a>
+                                                <br>
+                                                <span>实时分析网站/APP上发生的用户行为、用户画像</span>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe66a;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">分群</a>
+                                                <br>
+                                                <span>针对不同人群进行精准营销</span>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe669;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">内置营销工具</a>
+                                                <br>
+                                                <span>内置多种群发工具、群发模板，跟踪营销效果</span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="item-hover h-dropdown" data-key="5" style="width: 100px;">
+                    <a href="" class="hd">知识库 <i class="iconfont icon-down"></i></a>
+                    <span class="trangle"></span>
+                    <div class="bd bd-5" style="width: 470px">
+                        <div class="nav-content-item nav-content-item-5">
+                            <div class="newNav-top" style="height: 330px">
+                                <div class="help-row demo">
+                                    <h3 class="row-tit"><a href="">博客</a></h3>
+                                    <ul>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe65d;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a
+                                                    onclick="window.location.href='file:///D:/Html/方舟博客/blog.html?page=1&category_id=1'">产品动态</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe663;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a
+                                                    onclick="window.location.href='file:///D:/Html/方舟博客/blog.html?page=1&category_id=2'">数据分析方法</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe65f;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a
+                                                    onclick="window.location.href='file:///D:/Html/方舟博客/blog.html?page=1&category_id=3'">客户案例</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe667;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a
+                                                    onclick="window.location.href='file:///D:/Html/方舟博客/blog.html?page=1&category_id=4'">市场活动</a>
+                                            </div>
+                                        </li>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont blue">&#xe662;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a
+                                                    onclick="window.location.href='file:///D:/Html/方舟博客/blog.html?page=1&category_id=5'">资料下载</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="r-line"></div>
+                                <div class="help-row demo">
+                                    <h3 class="row-tit"><a href="">方舟课堂</a></h3>
+                                    <ul>
+                                        <li class="newNav-item">
+                                            <div class="lf-icon">
+                                                <i class="iconfont perp">&#xe66c;</i>
+                                            </div>
+                                            <div class="rt-text">
+                                                <a href="">视频教程</a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <a href="" class="hd">关于我们</a>
+                </li>
+                <li class="item-hover h-dropdown" data-key="4" style="width: 123px">
+                    <a href="" class="hd">易观方舟Argo <i class="iconfont free">&#xe6ae;</i> </a>
+                </li>
+            </ul>
+
+            <div class="sign-in">
+                <div class="no" id="notLoggedIn">
+                    <a class="pre-link" onclick="window.location.href='file:///D:/Html/方舟博客/login.html'">登录</a>
+                    <a href="" class="l-demo">体验Demo</a>
+                </div>
+                <div style="display: inline-block;">
+                    <div class="LoggedIn outer" id="loggedIn">
+                        <div class="img"><img id="loginImg" src="images/mormal-mini.png"></div>
+                        <div class="userInfo">
+                            <a href="javascript:;" class="user-name" id="loginName"></a>
+                            <i class="iconfont">&#xee4e;</i>
+                        </div>
+                        <ul class="operation">
+                            <li class="logout">
+                                <iframe id="logoutiframe" style="display:none"></iframe>
+                                <a href="javascript:" id="loginOut">退出</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="min-nav">
+                    <i class="iconfont menu">&#xe697;</i>
+                    <i class="iconfont menu icon-guanbi-xiao"></i>
+                    <div class="nav-li-container">
+                        <div class="container-fluid" style="margin: 0 -15px;background: #fff;">
+                            <div class="nlc-left" action-type="min-nav-tab">
+                                <ul>
+                                    <li class="nav-li">
+                                        <div>产品 <i class="iconfont icon-right"></i></div>
+                                        <div class="co-1 co">
+                                            <ul class="clearfix">
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe668;</i>
+                                                        <span class="desc">自定义看板</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe65f;</i> <span
+                                                            class="desc">数据分析</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe66a;</i> <span
+                                                            class="desc">用户分群</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe669;</i>
+                                                        <span class="desc">精准触达</span></a>
+                                                </li>
+                                            </ul>
+                                            <ul class="clearfix">
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe661;</i>
+                                                        <span class="desc">多埋点方案选择</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe664;</i>
+                                                        <span class="desc">多平台对接</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe6ad;</i>
+                                                        <span class="desc">分析方法学习</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe65e;</i>
+                                                        <span class="desc">用户画像</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href="">
+                                                        <i class="iconfont">&#xe65a;</i> <span
+                                                            class="desc">多种版本可选</span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-li">
+                                        <div>解决方案 <i class="iconfont icon-right"></i></div>
+                                        <div class="co-1 co">
+                                            <div class="tl">职业解决方案</div>
+                                            <ul class="clearfix">
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe69a;</i>
+                                                        <span class="desc">CXO</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe69d;</i> <span
+                                                            class="desc">运营</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe69c;</i> <span
+                                                            class="desc">市场</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe601;</i>
+                                                        <span class="desc">产品</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe699;</i>
+                                                        <span class="desc">数据</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe69e;</i>
+                                                        <span class="desc">研发</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe692;</i>
+                                                        <span class="desc">网站运营</span></a>
+                                                </li>
+                                            </ul>
+                                            <div class="tl">行业解决方案</div>
+                                            <ul class="clearfix">
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe6a0;</i>
+                                                        <span class="desc">电商</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe6a4;</i>
+                                                        <span class="desc">银行</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe6a8;</i>
+                                                        <span class="desc">证券</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe69f;</i>
+                                                        <span class="desc">教育</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe6a2;</i>
+                                                        <span class="desc">互联网</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe6a3;</i>
+                                                        <span class="desc">品牌零售</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe6a1;</i>
+                                                        <span class="desc">社区</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe664;</i> <span
+                                                            class="desc">企业服务</span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-li">
+                                        <div><a href="" class="hd">行业 Demo</a></div>
+                                    </li>
+                                    <li class="nav-li">
+                                        <div>帮助文档 <i class="iconfont icon-right"></i></div>
+                                        <div class="co-2 co">
+                                            <div class="tl">只需简单4步，快速应用方舟</div>
+                                            <ul class="clearfix" style="margin-top: 2px;">
+                                                <li><a href="" target="_blank"><i class="iconfont">&#xe661;</i>
+                                                        <span>1、安装部署</span></a></li>
+                                                <li><a href="" target="_blank"><i class="iconfont">&#xe6ad;</i>
+                                                        <span>2、创建项目</span></a></li>
+                                            </ul>
+                                            <ul class="clearfix">
+                                                <li><a href="" target="_blank"><i class="iconfont">&#xe655;</i>
+                                                        <span>3、接入数据及运营服务</span></a>
+                                                </li>
+                                                <li><a href="" target="_blank"><i class="iconfont">&#xe653;</i>
+                                                        <span>4、开始分析</span></a></li>
+                                            </ul>
+                                            <div class="tl">方舟核心功能</div>
+                                            <ul class="clearfix sdk-ul">
+                                                <li style="width: 32%;">
+                                                    <a href="" target="_blank"><i class="iconfont">&#xe65f;</i> <span
+                                                            class="desc">分析</span></a>
+                                                </li>
+                                                <li style="width: 33%;">
+                                                    <a href="" target="_blank"><i class="iconfont">&#xe66a;</i> <span
+                                                            class="desc">分群</span></a>
+                                                </li>
+                                                <li style="width: 35%;">
+                                                    <a href="" target="_blank"><i class="iconfont">&#xe669;</i> <span
+                                                            class="desc">内置营销工具</span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-li">
+                                        <div><a href="">知识库</a> <i class="iconfont icon-right"></i></div>
+                                        <div class="co-1 co">
+                                            <div class="tl"><a href="">博客</a></div>
+                                            <ul class="clearfix">
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe65d;</i> <span
+                                                            class="desc">产品动态</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe663;</i>
+                                                        <span class="desc">数据分析方法</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe65f;</i>
+                                                        <span class="desc">客户案例</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe667;</i> <span
+                                                            class="desc">市场活动</span></a>
+                                                </li>
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe662;</i>
+                                                        <span class="desc">资料下载</span></a>
+                                                </li>
+                                            </ul>
+                                            <div class="tl"><a href="">方舟课堂</a></div>
+                                            <ul class="clearfix">
+                                                <li>
+                                                    <a href=""><i class="iconfont">&#xe66c;</i>
+                                                        <span class="desc">视频教程</span></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-li">
+                                        <div><a href="" class="hd">关于我们</a></div>
+                                    </li>
+                                    <li class="nav-li">
+                                        <div><a href="" class="hd">易观方舟Argo</a></div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="p-article container">
+        <div class="article-main clear row">
+            <div class="gotop"></div>
+            <div class="article-l col-md-12 col-lg-8">
+                <!-- 面包屑 开始 -->
+                <div class="bread" id="href">
+                    当前位置：
+                    <a onclick="window.location.href='file:///D:/Html/方舟博客/blog.html'">易观方舟</a>
+                    <span> &gt; </span>
+                    <a onclick="window.location.href='file:///D:/Html/方舟博客/blog.html'">知识库</a>
+                    <span> &gt; </span>
+                    <a :onclick="article_id(article_id)">{{title}}</a>
+                </div>
+                <script>
+                    console.log(title[0])
+                    new Vue({
+                        el: '#href',
+                        data: {
+                            title: title[0],
+                        },
+                        methods: {
+                            article_id: function (article_id) {
+                                return "window.location.href='file:///D:/Html/方舟博客/article.html?article_id=" +
+                                    article_id + "'"
+                            },
+
+                        }
+                    })
+                </script>
+                <!-- 面包屑 结束 -->
+                <div class="article-hd" id="article">
+                    <h1 class="article-tit">{{title}}</h1>
+                    <div class="article-info">
+                        <img src="images/author.png" height="18" width="18" alt="" class="src">
+                        <span class="article-author">{{author}}</span>
+                        <span class="article-date">2019-06-25 18:00</span>
+                        <div class="article-tag">
+                            <i class="iconfont">&#xef08;</i>
+                            <span class="keyword" v-for="item,index in 3">
+                                <a :onclick="tagHref(tagIdList,index)" rel="tag">{{tagNameList[0][index]}}&nbsp;</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    new Vue({
+                        el: '#article',
+                        data: {
+                            title: title[0],
+                            author: username[0]
+                        },
+                        methods: {
+                            tagHref: function (tagIdList, index) {
+                                return "window.location.href='file:///D:/Html/方舟博客/blog.html?page=1&tag_id=" +
+                                    tagIdList[index] + "'"
+                            }
+                        }
+                    })
+                </script>
+                <div class="article-cnt" id="content">
+                </div>
+                <script>
+                    new Vue({
+                        el: '#content',
+                        data: {
+                            content: content[0]
+                        }
+                    })
+                    document.getElementById('content').innerHTML = content[0]
+                </script>
+            </div>
+
+            <div class="col-md-12 col-lg-4">
+
+                <div id="hostTag" class="hot-tags">
+                    <h2>热门标签</h2>
+                    <ul>
+                        <li v-for="(item,index) in list"><a :id="forId(index)" :onclick="for_tagHot(id,index)"
+                                style="font-size: 22px">{{text[index]}}</a>&nbsp&nbsp</li>
+                    </ul>
+                </div>
+                <script>
+                    var list = [],
+                        id = [];
+                    $.ajax({
+                        url: "http://localhost:8080/user/tag/findAllTag", //获取数据列 
+                        type: 'GET',
+                        data: {},
+                        dataType: "JSON",
+                        async: false,
+                        success: function (e) {
+                            console.log(e);
+                            var tag = JSON.stringify(e);
+                            jsonData = JSON.parse(tag); //把后台传来的数据转来JSON格式
+                            for (x in jsonData.data) {
+                                list.push(jsonData.data[x].tag_name)
+                            }
+                            for (y in jsonData.data) {
+                                id.push(jsonData.data[y].tag_id)
+                            }
+                        }
+                    });
+                    var vm = new Vue({
+                        el: '#hostTag',
+                        data: {
+                            text: list
+                        },
+                        methods: {
+                            forId: function (id, index) {
+                                return id[index]
+                            },
+                            for_tagHot: function (id, index) {
+                                return "window.location.href='file:///D:/Html/方舟博客/blog.html?page=1&tag_id=" +
+                                    id[index] + "'"
+                            }
+                        }
+                    })
+                </script>
+                <!-- 相关推荐 -->
+                <div id="hotArticle" class="article-r">
+                    <h4 class="rcmd-tit">相关推荐：</h4>
+                    <ul class="rcmd-list">
+                        <li v-for="item,index in 6">
+                            <a :onclick="for_hotArticle(hot_article_id,index)">{{title[index]}}</a>
+                        </li>
+                    </ul>
+                </div>
+                <script>
+                    hot_article_id = [],
+                        hot_title = [];
+                    $.ajax({
+                        url: "http://localhost:8080/user/findPopularArticle",
+                        data: {},
+                        type: "POST",
+                        async: false,
+                        contentType: "application/json;charset=utf-8",
+                        success: function (data) {
+                            console.log(data);
+                            var article = JSON.stringify(data);
+                            jsonData = JSON.parse(article);
+                            for (i = 0; i < 6; i++) {
+                                hot_article_id.push(jsonData.data[i].article_id)
+                            }
+                            for (i = 0; i < 6; i++) {
+                                hot_title.push(jsonData.data[i].title)
+                            }
+                        },
+                        error: function (data) {
+                            console.log(data)
+                        }
+                    });
+                    new Vue({
+                        el: '#hotArticle',
+                        data: {
+                            title: hot_title,
+                        },
+                        methods: {
+                            for_hotArticle: function (hot_article_id, index) {
+                                return "window.location.href='file:///D:/Html/方舟博客/blog.html?article_id=" +
+                                    hot_article_id[index] + "'"
+                            }
+                        }
+                    })
+                </script>
+            </div>
+        </div>
+    </div>
+    <div class="demo-footer">
+        <div class="df-cont">
+            <img src="images/yuyang.png" alt="" class="lz">
+            <h1>获客、促活的秘密就在你的产品里</h1>
+            <p>你的产品很优秀，如果知道访客在你的网站或APP上都做了什么，就能发现获客、促活的秘密<br>通过转化漏斗分析、下钻用户行为，我们可以找到用户流失的原因，用数据驱动增长实验，实现精益成长<br>2019年第一季度，方舟帮用户实现了7倍的增长，在线体验demo，看看方舟有什么不可思议的力量
+            </p>
+            <p class="lz-text">于揚 | 易观 创始人</p>
+            <div class="text-button" id="inLoginedDemo">
+                <a>体验Demo</a>
+            </div>
+        </div>
+    </div>
+    <div class="m-portal-ft">
+        <div class="outer">
+            <div class="container">
+                <div class="row">
+                    <div class="left clearfix col-md-7">
+                        <ul id="ftDemoHref">
+                            <li class="hd"><a>产品特征</a></li>
+                            <li class="bd"><a>灵活看板</a></li>
+                            <li class="bd"><a>实时分析</a></li>
+                            <li class="bd"><a>分群画像</a>
+                            </li>
+                            <li class="bd"><a>运营闭环</a></li>
+                            <li class="bd"><a>数据接入</a></li>
+                            <li class="bd"><a>平台扩展</a></li>
+                            <li class="bd"><a>标签增补</a></li>
+                            <li class="bd"><a>私有部署</a></li>
+                        </ul>
+
+                        <ul>
+                            <li class="hd"><a>行业 Demo</a></li>
+                            <li class="bd"><a>银行</a></li>
+                            <li class="bd"><a>证券</a></li>
+                            <li class="bd"><a>新零售</a></li>
+                            <li class="bd"><a>电商</a></li>
+                            <li class="bd"><a>社区</a></li>
+                            <li class="bd"><a>通用</a></li>
+                        </ul>
+
+                        <ul class="ul-doc">
+                            <li class="hd"><a>帮助文档</a></li>
+                            <li class="bd"><a target="_blank">接入流程</a></li>
+                            <li class="bd"><a target="_blank">数据接入</a>
+                            </li>
+                            <li class="bd"><a target="_blank">名词解释</a></li>
+                            <li class="bd"><a target="_blank">使用说明</a></li>
+                            <li class="bd"><a target="_blank">常见问题</a></li>
+                        </ul>
+                        <ul>
+                            <li class="hd" onclick="window.location.href='file:///D:/Html/方舟博客/blog.html'"><a>知识库</a>
+                            </li>
+                            <li class="bd"
+                                onclick="window.location.href='file:///D:/Html/方舟博客/blog.html?page=1&category_id=1'">
+                                <a>产品动态</a></li>
+                            <li class="bd"
+                                onclick="window.location.href='file:///D:/Html/方舟博客/blog.html?page=1&category_id=2'">
+                                <a>客户案例</a></li>
+                            <li class="bd"
+                                onclick="window.location.href='file:///D:/Html/方舟博客/blog.html?page=1&category_id=3'">
+                                <a>数据分析方法</a></li>
+                            <li class="bd"
+                                onclick="window.location.href='file:///D:/Html/方舟博客/blog.html?page=1&category_id=4'">
+                                <a>市场活动</a></li>
+                            <li class="bd"
+                                onclick="window.location.href='file:///D:/Html/方舟博客/blog.html?page=1&category_id=5'">
+                                <a>资料下载</a></li>
+                        </ul>
+                        <ul>
+                            <li class="hd">关于我们</li>
+                            <li class="bd"><a>公司介绍</a></li>
+                            <li class="bd"><a>合作伙伴</a></li>
+                            <li class="bd"><a>服务条款</a></li>
+                            <li class="bd"><a>隐私政策</a></li>
+                            <li class="bd"><a>OPT_OUT</a></li>
+                            <li class="bd visible-lg visible-md"><a target="_blank">易观官网</a></li>
+                            <li class="bd hidden-lg hidden-md"><a target="_blank">易观官网</a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="hd">下载</li>
+                            <li class="bd"><a target="_blank">易观方舟介绍PDF</a></li>
+                            <li class="bd"><a>易观方舟Argo</a></li>
+                        </ul>
+                    </div>
+                    <div class="right col-md-5">
+                        <div class="information">
+                            <div class="logo visible-lg visible-md"><a target="_blank"><img class="img-1"
+                                        src="images/analysys-logo.svg" /></a> <img src="images/logo.svg" /></div>
+                            <div class="logo hidden-lg hidden-md"><a target="_blank"><img class="img-1"
+                                        src="images/analysys-logo.svg" /></a>
+                                <img src="images/logo.svg" /></div>
+                            <div class="tel"><i class="iconfont" style="font-size: 28px">&#xe641;</i><a
+                                    style="color: rgba(255, 255, 255, 0.7); font-size: 34px"
+                                    href="tel:4006-010-231">4006 - 010 - 231</a></div>
+                            <div class="email"><i class="iconfont">&#xe635;</i>service@analysys.com.cn</div>
+                        </div>
+                        <div class="qcode">
+                            <div class="weixin">
+                                <div><img src="images/wechat.png"></div>
+                                <div style="text-align: center; margin-top: 5px;">微信公众号</div>
+                            </div>
+                            <div class="qq">
+                                <div><img src="images/qq.png"></div>
+                                <div style="text-align: center; margin-top: 5px;"> 加入易观方舟Argo社区交流群</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-info">
+            <div class="container-fluid">
+                <div class="row row1">
+                    <div class="row-up col-sm-6 ">
+                        <span>Copyright © 2018</span>
+                        <span>易观版权所有</span>
+                        <span>京ICP备15065619号-1 &nbsp;</span>
+                    </div>
+                    <div class=" row-down col-sm-6 ">
+                        <span>&nbsp;京公网安备110105005360号</span>
+                        <a>服务条款</a>
+                        <a>隐私政策</a>
+                        <a>OPT-OUT</a>
+                    </div>
+                </div>
+
+                <div class="row row2">
+                    <div class="row-down col-sm-12 ">
+                        <span>Copyright © 2018</span>
+                        <span>易观版权所有</span>
+                    </div>
+                    <div class=" row-down col-sm-12 ">
+                        <span>京ICP备15065619号-1</span>
+                        <span>京公网安备110105005360号</span>
+                    </div>
+                    <div class=" row-down col-sm-12 ">
+                        <a>服务条款</a>
+                        <a>隐私政策</a>
+                        <a>OPT-OUT</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
